@@ -1,11 +1,7 @@
-import Bao from "baojs";
+import { Elysia } from "elysia";
 
-const app = new Bao();
-const port = parseInt(process.env.PORT || "8080");
+const app = new Elysia().get("/", () => "Hello Elysia").listen(8080);
 
-app.get("/", (ctx) => {
-  return ctx.sendText("Hello world from Bao.js running on Railway!");
-});
-
-const server = app.listen({ port: port });
-console.log(`Server listening on ${server.hostname}:${port}`);
+console.log(
+  `🦊 Elysia is running at ${app.server?.hostname}:${app.server?.port}`
+);
